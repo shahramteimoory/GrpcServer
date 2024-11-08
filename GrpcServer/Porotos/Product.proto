@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcServer.Porotos";
+
+service ProductServices{
+	 rpc AddNewProduct(RequestAddProductDto) returns(ResponseAddNewProduct);
+	 rpc GetAllProduct(RequestAllProduct) returns(ResponceAllProduct);
+}
+
+message RequestAddProductDto{
+	string Name=1;
+	string Brand=2;
+	int32 Price=3;
+}
+message ResponseAddNewProduct{
+	bool IsSucess=1;
+
+}
+
+message ProductItem{
+	string Name=1;
+	string Brand=2;
+	int32 Price=3;
+}
+message ResponceAllProduct{
+	repeated ProductItem items=1;
+}
+message RequestAllProduct{
+	int32 page=1;
+	int32 pageSize=2;
+
+}
